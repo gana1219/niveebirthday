@@ -411,16 +411,7 @@
         <div id="contentContainer" class="row g-3"></div>
     </div>
 
-    <!-- Audio -->
-   <audio id="bgMusic" loop>
-  <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Keys_of_Moon_Music/Ambient/A_Tender_Love_-_Keys_of_Moon_Music.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
 
-<!-- Button -->
-<button onclick="toggleMusic()" class="btn btn-light position-fixed bottom-0 end-0 m-3 shadow-sm">
-  🎶 Toggle Music
-</button>
 
 
     <!-- Bootstrap JS -->
@@ -2626,25 +2617,6 @@ function shuffleArray(array) {
           const music = document.getElementById("bgMusic");
   let isPlaying = false; // Track state manually
   let isToggling = false; // Prevent rapid toggles
-
-  async function toggleMusic() {
-    if (isToggling) return; // Prevent overlapping calls
-    isToggling = true;
-
-    try {
-      if (!isPlaying) {
-        await music.play();
-        isPlaying = true;
-      } else {
-        music.pause();
-        isPlaying = false;
-      }
-    } catch (err) {
-      console.error("Audio play error:", err);
-    } finally {
-      isToggling = false;
-    }
-  }
 
         document.addEventListener("mousemove", function (e) {
         const heart = document.createElement("div");
