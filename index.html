@@ -403,7 +403,7 @@
         </button>
     </div>
     <!-- Button to Open Sidebar -->
-    <button class="heart-share-btn" onclick="toggleSidebar()">
+    <button disabled class="heart-share-btn" onclick="toggleSidebar()">
         ❤️ click me
     </button>
     <!-- Content Sections -->
@@ -2670,7 +2670,9 @@ function updateBirthdayCountdown() {
     const diff = birthday - now;
 
     if (diff <= 0) {
-        document.getElementById("currentTime").textContent = "🎉 Happy Birthday Baby! 🥳";
+        document.getElementById("currentTime").innerHTML = "<span class='happy-birthday'>🎉 Happy Birthday Baby! 🥳 Love u soo much 💘</span>";
+         document.querySelector(".heart-share-btn").disabled = false;
+        clearInterval(countdownInterval);
         return;
     }
 
