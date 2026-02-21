@@ -371,6 +371,102 @@
 }
 
 
+/* ===== Games ===== */
+.game-select-card {
+    background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+    border: 2px solid #ffd6e8;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Comic Neue', 'Poppins', cursive, sans-serif;
+}
+.game-select-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(255, 105, 180, 0.3);
+}
+.game-select-card .game-icon { font-size: 3rem; display: block; margin-bottom: 10px; }
+.game-select-card .game-name { font-size: 1.3rem; font-weight: 700; color: #d63384; }
+.game-select-card .game-desc { font-size: 0.9rem; color: #b21f66; margin-top: 5px; }
+
+.game-stats { display: flex; justify-content: center; gap: 20px; margin: 15px 0; flex-wrap: wrap; }
+.game-stat {
+    background: linear-gradient(135deg, #ffd6e8, #ffe8f0);
+    padding: 8px 20px; border-radius: 20px; font-weight: 600; color: #d63384; font-size: 0.95rem;
+}
+.game-back-btn {
+    background: linear-gradient(135deg, #ff6b9d, #ff4081); color: white; border: none;
+    padding: 8px 20px; border-radius: 20px; font-weight: 600; cursor: pointer;
+    transition: transform 0.2s; display: inline-block; margin: 0 5px 15px 0;
+}
+.game-back-btn:hover { transform: scale(1.05); }
+
+
+/* Guess Caption */
+.quiz-layout {
+    display: flex; gap: 20px; max-width: 900px; margin: 15px auto; align-items: center; padding: 0 10px;
+}
+.quiz-image-container {
+    flex: 1; min-width: 0; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3); border: 3px solid #ff66a3;
+}
+.quiz-image-container img { width: 100%; height: 300px; object-fit: cover; display: block; }
+.quiz-options { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+@media (max-width: 600px) {
+    .quiz-layout { flex-direction: column; }
+    .quiz-image-container img { height: 250px; }
+}
+.quiz-option {
+    background: linear-gradient(135deg, #fff0f5, #ffe4ec); border: 2px solid #ffd6e8;
+    border-radius: 12px; padding: 12px 20px; cursor: pointer;
+    font-weight: 600; color: #d63384; transition: all 0.3s ease; text-align: center;
+}
+.quiz-option:hover { background: linear-gradient(135deg, #ffe4ec, #ffd6e8); transform: scale(1.02); }
+.quiz-option.correct { background: linear-gradient(135deg, #c8e6c9, #a5d6a7) !important; border-color: #66bb6a !important; color: #2e7d32 !important; }
+.quiz-option.wrong { background: linear-gradient(135deg, #ffcdd2, #ef9a9a) !important; border-color: #ef5350 !important; color: #c62828 !important; }
+.quiz-progress { max-width: 500px; margin: 10px auto; height: 8px; background: #ffd6e8; border-radius: 4px; overflow: hidden; }
+.quiz-progress-bar { height: 100%; background: linear-gradient(90deg, #ff4081, #ff6b9d); border-radius: 4px; transition: width 0.3s ease; }
+
+/* Photo Puzzle */
+.puzzle-layout {
+    display: flex; gap: 20px; max-width: 700px; margin: 15px auto; align-items: center; justify-content: center; padding: 0 10px;
+}
+.puzzle-ref-container { flex: 0 0 auto; }
+.puzzle-ref {
+    width: 300px; height: 300px; object-fit: contain;
+    border-radius: 12px; border: 3px solid #ff66a3;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+    background: #fff0f5;
+}
+.puzzle-play-area { flex: 0 0 auto; }
+.puzzle-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+    width: 300px; background: #ffd6e8; padding: 4px; border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+}
+.puzzle-tile {
+    aspect-ratio: 1; border-radius: 8px; cursor: pointer; transition: transform 0.15s ease;
+}
+.puzzle-tile:not(.puzzle-empty):hover { transform: scale(0.95); }
+.puzzle-empty { background: rgba(255, 255, 255, 0.3); cursor: default; }
+@media (max-width: 600px) {
+    .puzzle-layout { flex-direction: column; }
+    .puzzle-ref { width: 200px; height: 200px; }
+    .puzzle-grid { width: 200px; }
+}
+
+/* Game Result */
+.game-result {
+    text-align: center; padding: 30px;
+    background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+    border-radius: 20px; border: 2px solid #ffd6e8; max-width: 400px;
+    margin: 20px auto; animation: popIn 0.5s ease;
+}
+.game-result .result-icon { font-size: 3rem; display: block; margin-bottom: 10px; }
+.game-result .result-text { font-size: 1.3rem; font-weight: 700; color: #d63384; }
+.game-result .result-score { font-size: 1.1rem; color: #b21f66; margin-top: 5px; }
+
     </style>
 </head>
 
@@ -398,6 +494,7 @@
         <a href="#" onclick="showContent('birthdaybabe')">Birthday Babe</a>
         <a href="#" onclick="showContent('love')">Love</a>
         <a href="#" onclick="showContent('family')">Family</a>
+        <a href="#" onclick="showGames()">Games 🎮</a>
         <button class="btn btn-danger mt-4 mx-3 w-75" onclick="showReasons()">
             💌 Why I Love You
         </button>
@@ -2664,15 +2761,19 @@ function reloadAndCloseSidebar(event) {
         location.reload();
     }, 300); // adjust timing if needed
 }
+var countdownInterval = null;
+
 function updateBirthdayCountdown() {
-    const birthday = new Date("2025-05-19T00:00:00"); // 🎂 Set your birthday here
+    const birthday = new Date("2025-05-19T00:00:00");
     const now = new Date();
     const diff = birthday - now;
+    const el = document.getElementById("currentTime");
+    if (!el) return;
 
     if (diff <= 0) {
-        document.getElementById("currentTime").innerHTML = "<span class='happy-birthday'>🎉 Happy Birthday Baby! 🥳 Love u soo much 💘</span>";
-         document.querySelector(".heart-share-btn").disabled = false;
-        clearInterval(countdownInterval);
+        el.innerHTML = "<span class='happy-birthday'>🎉 Happy Birthday Baby! 🥳 Love u soo much 💘</span>";
+        document.querySelector(".heart-share-btn").disabled = false;
+        if (countdownInterval) clearInterval(countdownInterval);
         return;
     }
 
@@ -2682,13 +2783,11 @@ function updateBirthdayCountdown() {
     const seconds = Math.floor((diff / 1000) % 60);
 
     const timeLeft = `${days} days ${hours} hrs ${minutes} mins ${seconds} secs`;
-
-    document.getElementById("currentTime").textContent = `🎉 Birthday's coming! ⏳ ${timeLeft}`;
+    el.textContent = `🎉 Birthday's coming! ⏳ ${timeLeft}`;
 }
 
-// Update every second
-setInterval(updateBirthdayCountdown, 1000);
-updateBirthdayCountdown(); // Call once on load
+countdownInterval = setInterval(updateBirthdayCountdown, 1000);
+updateBirthdayCountdown();
 
  let currentRotation = 0;
 
@@ -2698,13 +2797,251 @@ updateBirthdayCountdown(); // Call once on load
     modalImage.style.transform = `rotate(${currentRotation}deg)`;
     modalImage.style.transition = 'transform 0.3s ease';
   }
-  const imageModal = document.getElementById('imageModal');
-  imageModal.addEventListener('hidden.bs.modal', () => {
-    currentRotation = 0;
-    const modalImage = document.getElementById('modalImage');
-    modalImage.style.transform = 'rotate(0deg)';
+  document.addEventListener('DOMContentLoaded', function() {
+    var imageModal = document.getElementById('imageModal');
+    if (imageModal) {
+      imageModal.addEventListener('hidden.bs.modal', function() {
+        currentRotation = 0;
+        var modalImage = document.getElementById('modalImage');
+        if (modalImage) modalImage.style.transform = 'rotate(0deg)';
+      });
+    }
   });
 
+
+// ===== GAMES =====
+function pickRandomCategory() {
+    var cats = Object.keys(imageData);
+    return cats[Math.floor(Math.random() * cats.length)];
+}
+
+function pickRandom(arr, count) {
+    var indices = [], result = [];
+    while (indices.length < count && indices.length < arr.length) {
+        var r = Math.floor(Math.random() * arr.length);
+        if (indices.indexOf(r) === -1) { indices.push(r); result.push(arr[r]); }
+    }
+    return result;
+}
+
+function showGames() {
+    document.getElementById("welcomeWrapper").style.setProperty("display", "none", "important");
+    let container = document.getElementById("contentContainer");
+    document.getElementById("timerclear").innerHTML = "";
+    container.innerHTML = "";
+
+    container.innerHTML = `
+        <h5 class="text-center mb-4 fw-bold fancy-heading display-1">Games</h5>
+        <div class="row g-4 justify-content-center mt-2">
+            <div class="col-10 col-sm-5 col-md-4">
+                <div class="game-select-card" onclick="startGuessCaption()">
+                    <span class="game-icon">💬</span>
+                    <div class="game-name">Guess the Caption</div>
+                    <div class="game-desc">Which caption fits the photo?</div>
+                </div>
+            </div>
+            <div class="col-10 col-sm-5 col-md-4">
+                <div class="game-select-card" onclick="startPuzzleSlide()">
+                    <span class="game-icon">🧩</span>
+                    <div class="game-name">Photo Puzzle</div>
+                    <div class="game-desc">Slide tiles to complete the photo!</div>
+                </div>
+            </div>
+        </div>`;
+    toggleSidebar();
+}
+
+// ===== GUESS THE CAPTION =====
+var qzImgs = [], qzIdx = 0, qzScore = 0, qzTotal = 10, qzDone = false, qzPool = [];
+
+function getUniqueFromCategory(cat) {
+    var skip = ["Wishing you joy!", "Nee dha!!!"];
+    var seen = new Set();
+    return imageData[cat].filter(function(img) {
+        if (skip.indexOf(img.text) !== -1 || seen.has(img.text)) return false;
+        seen.add(img.text); return true;
+    });
+}
+
+function startGuessCaption() {
+    var cats = Object.keys(imageData);
+    shuffleArray(cats);
+    qzPool = [];
+    for (var c = 0; c < cats.length; c++) {
+        var pool = getUniqueFromCategory(cats[c]);
+        if (pool.length >= 4) { qzPool = pool; break; }
+    }
+    if (qzPool.length < 4) {
+        alert("Not enough unique captions to play!");
+        return;
+    }
+    shuffleArray(qzPool);
+    qzImgs = qzPool.slice(0, Math.min(qzTotal, qzPool.length));
+    qzIdx = 0; qzScore = 0; qzDone = false;
+    showQuizQ();
+}
+
+function showQuizQ() {
+    if (qzIdx >= qzImgs.length) { showQuizResult(); return; }
+    var cur = qzImgs[qzIdx];
+    var wrong = qzPool.filter(function(img) { return img.text !== cur.text; });
+    shuffleArray(wrong);
+    var opts = [cur.text, ...wrong.slice(0, 3).map(i => i.text)];
+    shuffleArray(opts);
+
+    let container = document.getElementById("contentContainer");
+    container.innerHTML = `
+        <h4 class="text-center fancy-heading" style="color:#d63384;">Guess the Caption 💬</h4>
+        <div class="game-stats">
+            <span class="game-stat">Score: ${qzScore}/${qzImgs.length}</span>
+            <span class="game-stat">Q: ${qzIdx + 1}/${qzImgs.length}</span>
+        </div>
+        <div class="quiz-progress"><div class="quiz-progress-bar" style="width:${(qzIdx/qzImgs.length)*100}%"></div></div>
+        <div class="quiz-layout">
+            <div class="quiz-image-container"><img src="${cur.src}" alt="quiz"></div>
+            <div class="quiz-options" id="qOpts"></div>
+        </div>`;
+
+    qzDone = false;
+    let optsEl = document.getElementById("qOpts");
+    opts.forEach(o => {
+        let btn = document.createElement("div");
+        btn.classList.add("quiz-option");
+        btn.textContent = o;
+        btn.addEventListener("click", () => answerQuiz(btn, o, cur.text));
+        optsEl.appendChild(btn);
+    });
+}
+
+function answerQuiz(btn, picked, correct) {
+    if (qzDone) return;
+    qzDone = true;
+    document.querySelectorAll('.quiz-option').forEach(o => {
+        if (o.textContent === correct) o.classList.add('correct');
+        if (o.textContent === picked && picked !== correct) o.classList.add('wrong');
+    });
+    if (picked === correct) qzScore++;
+    qzIdx++;
+    setTimeout(showQuizQ, 1500);
+}
+
+function showQuizResult() {
+    var total = qzImgs.length;
+    let pct = total > 0 ? Math.round((qzScore / total) * 100) : 0;
+    let msg = pct >= 90 ? "🌟 You know us so well!" :
+              pct >= 70 ? "💖 Amazing memory!" :
+              pct >= 50 ? "💕 Not bad!" : "💪 Try again!";
+    document.getElementById("contentContainer").innerHTML = `
+        <div class="game-result">
+            <span class="result-icon">🏆</span>
+            <div class="result-text">${msg}</div>
+            <div class="result-score">${qzScore} / ${total} correct (${pct}%)</div>
+            <button class="game-back-btn mt-3" onclick="startGuessCaption()">Play Again 🔄</button>
+            <button class="game-back-btn mt-3" onclick="showGames()">All Games</button>
+        </div>`;
+}
+
+// ===== PHOTO PUZZLE (3x3 Slide) =====
+var pzTiles = [], pzEmpty = 8, pzMoves = 0, pzImg = "";
+
+function startPuzzleSlide() {
+    var pool = imageData[pickRandomCategory()];
+    pzImg = pool[Math.floor(Math.random() * pool.length)].src;
+    pzTiles = [0,1,2,3,4,5,6,7,8]; pzEmpty = 8; pzMoves = 0;
+
+    for (let i = 0; i < 200; i++) {
+        let nb = pzNeighbors(pzEmpty);
+        let pick = nb[Math.floor(Math.random() * nb.length)];
+        pzSwap(pzEmpty, pick);
+    }
+    renderPuzzle();
+}
+
+function pzNeighbors(pos) {
+    let r = Math.floor(pos/3), c = pos%3, n = [];
+    if (r > 0) n.push(pos-3); if (r < 2) n.push(pos+3);
+    if (c > 0) n.push(pos-1); if (c < 2) n.push(pos+1);
+    return n;
+}
+
+function pzSwap(a, b) {
+    [pzTiles[a], pzTiles[b]] = [pzTiles[b], pzTiles[a]];
+    if (pzTiles[a] === 8) pzEmpty = a;
+    if (pzTiles[b] === 8) pzEmpty = b;
+}
+
+function renderPuzzle() {
+    let container = document.getElementById("contentContainer");
+    container.innerHTML = `
+        <h4 class="text-center fancy-heading" style="color:#d63384;">Photo Puzzle 🧩</h4>
+        <div class="game-stats">
+            <span class="game-stat">Moves: <span id="pzMoves">0</span></span>
+            <button class="game-back-btn" onclick="startPuzzleSlide()" style="margin:0;">🔄 Change Photo</button>
+            <button class="game-back-btn" onclick="autoSolvePuzzle()" style="margin:0;">✨ Auto Solve</button>
+        </div>
+        <div class="puzzle-layout">
+            <div class="puzzle-ref-container"><img src="${pzImg}" class="puzzle-ref" alt="reference"></div>
+            <div class="puzzle-play-area">
+                <div class="puzzle-grid" id="pzGrid"></div>
+            </div>
+        </div>
+        <p class="text-center mt-3" style="color:#b21f66;font-weight:600;font-size:1rem;">Tap a tile next to the empty space to slide it</p>`;
+    drawPuzzleTiles();
+}
+
+function drawPuzzleTiles() {
+    let grid = document.getElementById("pzGrid");
+    grid.innerHTML = "";
+    for (let i = 0; i < 9; i++) {
+        let tile = document.createElement("div");
+        tile.classList.add("puzzle-tile");
+        if (pzTiles[i] === 8) {
+            tile.classList.add("puzzle-empty");
+        } else {
+            let t = pzTiles[i], row = Math.floor(t/3), col = t%3;
+            tile.style.backgroundImage = `url(${pzImg})`;
+            tile.style.backgroundSize = "300% 300%";
+            tile.style.backgroundPosition = `${col*50}% ${row*50}%`;
+            tile.addEventListener("click", () => clickTile(i));
+        }
+        grid.appendChild(tile);
+    }
+}
+
+function autoSolvePuzzle() {
+    pzTiles = [0,1,2,3,4,5,6,7,8];
+    pzEmpty = 8;
+    drawPuzzleTiles();
+    setTimeout(function() {
+        document.getElementById("contentContainer").innerHTML += `
+            <div class="game-result">
+                <span class="result-icon">✨</span>
+                <div class="result-text">Auto Solved!</div>
+                <button class="game-back-btn mt-3" onclick="startPuzzleSlide()">New Puzzle 🔄</button>
+                <button class="game-back-btn mt-3" onclick="showGames()">All Games</button>
+            </div>`;
+    }, 300);
+}
+
+function clickTile(pos) {
+    if (!pzNeighbors(pzEmpty).includes(pos)) return;
+    pzSwap(pos, pzEmpty);
+    pzMoves++;
+    document.getElementById("pzMoves").textContent = pzMoves;
+    drawPuzzleTiles();
+    if (pzTiles.every((t, i) => t === i)) {
+        setTimeout(() => {
+            document.getElementById("contentContainer").innerHTML += `
+                <div class="game-result">
+                    <span class="result-icon">🎊</span>
+                    <div class="result-text">Puzzle Solved!</div>
+                    <div class="result-score">Completed in ${pzMoves} moves</div>
+                    <button class="game-back-btn mt-3" onclick="startPuzzleSlide()">New Puzzle 🔄</button>
+                    <button class="game-back-btn mt-3" onclick="showGames()">All Games</button>
+                </div>`;
+        }, 300);
+    }
+}
 
     </script>
     <!-- Image Modal -->
